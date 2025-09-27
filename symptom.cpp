@@ -24,32 +24,32 @@ void detail::healthinfo() {
             cout << "             - " << suggestionName;
             matched = true;
              
-             if(suggestionName == medicalHistory || medicalHistory == "CommonCold" || medicalHistory == "commoncold" || medicalHistory == "common cold"){
-             	cout<<"\n\n\n            ALERT!!!\n";
-             	cout<<"          - Your medical history shows "<<suggestionName<<" and your current symptoms suggest another "<<suggestionName<<" episode.\n";
-             	cout<<"            Since this illness is recurring , please take precautions.";
-			 }
- 
- 
                  cout << "\n\n\n\n            RECOMMENDATION: " << endl << endl;
                  
             if(age <= 5) {
-        if(severity == "minor") {
-            if(duration <= 3)
-                cout << "            Young child with a minor headache for a short duration. Rest, hydrate, and monitor symptoms." << endl;
-            else
-                cout << "            ALERT: Young child has had a minor headache for 3 or more days. Monitor closely and consult a doctor if it continues." << endl;
+            if(severity == "minor") {
+            if(duration <= 3){
+            	cout<<"            Young child with a minor headache for a short duration." << endl;
+                cout<<"            Rest, hydrate, and monitor symptoms."<<endl;
+			}
+                else
+                cout<<"            ALERT: Young child has had a minor headache for 3 or more days. " << endl;
+                cout<<"            Monitor closely and consult a doctor if it continues."<<endl;
         }
         else if(severity == "moderate") {
-            if(duration <= 3)
-                cout << "            Young child with a moderate headache for a short duration. Keep them rested and hydrated. Consult a doctor if symptoms persist or worsen." << endl;
-            else
-                cout << "            ALERT: Young child has had a moderate headache for 3 or more days. Seek medical advice promptly." << endl;
+            if(duration <= 3){
+                cout << "            Young child with a moderate headache for a short duration.  " << endl;
+                cout << "            Keep them rested and hydrated."<<endl;
+                cout << "            Consult a doctor if symptoms persist or worsen."<<endl;
+             } else
+                cout << "            ALERT: Young child has had a moderate headache for 3 or more days. " << endl;
+                cout << "            Seek medical advice promptly."<<endl;
         }
         else if(severity == "serious") {
-            if(duration <= 3)
-                cout << "            Young child with a serious headache. Seek medical attention immediately!" << endl;
-            else
+            if(duration <= 3){
+                cout << "            Young child with a serious headache. " << endl;
+                cout << "            Seek medical attention immediately!"<<endl;
+            } else
                 cout << "            EMERGENCY: Young child has had a serious headache for 3 or more days! Seek immediate medical help!" << endl;
         }
     }
@@ -57,15 +57,17 @@ void detail::healthinfo() {
     // Adults (5–60)
     else if(age > 5 && age <= 60) {
         if(severity == "minor") {
-            if(duration <= 3)
-                cout << "            Adult with a minor headache for a short duration. Rest, hydrate, and monitor symptoms." << endl;
-            else
-                cout << "            Adult with a minor headache lasting 3 or more days. Monitor symptoms and consult a doctor if it continues." << endl;
+            if(duration <= 3){
+                cout << "            Adult with a minor headache for a short duration." << endl;
+                cout << "            Rest, hydrate, and monitor symptoms."<<endl;
+            } else
+                cout << "            Adult with a minor headache lasting 3 or more days. " << endl;
+                cout << "            Monitor symptoms and consult a doctor if it continues." <<endl;
         }
         else if(severity == "moderate") {
-            if(duration <= 3)
+            if(duration <= 3){
                 cout << "            Adult with a moderate headache for a short duration. Rest, avoid stress, and consult a doctor if it persists." << endl;
-            else
+            } else
                 cout << "            Adult with a moderate headache lasting 3 or more days. Seek medical advice promptly." << endl;
         }
         else if(severity == "serious") {
@@ -117,11 +119,6 @@ void detail::healthinfo() {
             cout << "              - " << suggestionName;
             matched = true;
             
-             if(suggestionName == medicalHistory || medicalHistory == "heartattack" || medicalHistory == "heart attack" || medicalHistory == "HeartAttack"){
-             	cout<<"\n\n\n            ALERT!!!\n";
-             	cout<<"          - Your medical history shows "<<suggestionName<<" and your current symptoms suggest another "<<suggestionName<<" episode.\n";
-             	cout<<"            Since this illness is recurring , please take precautions.";
-			 }
                   cout << "\n\n\n\n            RECOMMENDATION: " << endl << endl;
              if(age <= 5) {
                 cout << "            EMERGENCY: Child showing symptoms of a heart attack. Seek immediate hospital care!" << endl;

@@ -19,7 +19,15 @@ void detail::suggestion3() {
             cout << "          - Practice Breathing Exercises." << endl;
             cout << "          - Drinking warm water can help soothe airways." << endl;
             cout << "          - Avoid cold drinks that may trigger asthma." << endl;
-        }
+        } else if (suggestionName == "Typhoid Fever") {
+           cout << endl << endl << "          SUGGESTIONS: " << endl;
+           cout << "          - Take prescribed antibiotics exactly as directed by your doctor." << endl;
+           cout << "          - Drink plenty of clean water to stay hydrated." << endl;
+           cout << "          - Eat light, easily digestible foods (like soups, rice, and boiled vegetables)." << endl;
+           cout << "          - Wash hands thoroughly before eating and after using the restroom." << endl;
+           cout << "          - Avoid street food or uncooked foods that may carry bacteria." << endl;
+}
+
 
         getchar();
         getchar();

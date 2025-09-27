@@ -81,6 +81,75 @@ void detail::healthinfoThird() {
     }
 		}
 
+   // Typhoid Fever
+bool hasFever = symptom.find("fever") != string::npos || symptom.find("highfever") != string::npos;
+bool hasAbdominalPain = symptom.find("abdominalpain") != string::npos || symptom.find("stomachpain") != string::npos;
+bool hasHeadache = symptom.find("headache") != string::npos;
+bool hasLossOfAppetite = symptom.find("lossappetite") != string::npos || symptom.find("noappetite") != string::npos;
+bool hasDiarrheaOrConstipation = symptom.find("diarrhea") != string::npos || symptom.find("constipation") != string::npos;
+bool hasRash = symptom.find("rash") != string::npos || symptom.find("rosespots") != string::npos;
+
+if (hasFever && hasAbdominalPain && hasHeadache && hasLossOfAppetite && hasDiarrheaOrConstipation && hasRash) {
+    suggestionName = "Typhoid Fever";
+    cout << "             - " << suggestionName;
+    matched2 = true;
+
+    cout << "\n\n\n\n            RECOMMENDATION: " << endl << endl;
+
+    // Children (<=5 years)
+    if(age <= 5) {
+        if(severity == "minor") {
+            if(duration <= 3)
+                cout << "            Child with mild typhoid symptoms for short duration. Keep hydrated, monitor fever, light diet." << endl;
+            else
+                cout << "            ALERT: Child has had mild typhoid symptoms for 3+ days. Visit pediatrician for antibiotics." << endl;
+        }
+        else if(severity == "moderate") {
+            cout << "            Child with moderate typhoid symptoms. URGENT: Go to hospital and start prescribed antibiotics." << endl;
+        }
+        else if(severity == "serious") {
+            cout << "            EMERGENCY: Child experiencing severe typhoid complications. Hospitalization required immediately!" << endl;
+        }
+    }
+
+    // Adults (6–60 years)
+    else if(age > 5 && age <= 60) {
+        if(severity == "minor") {
+            if(duration <= 3)
+                cout << "            Adult with mild typhoid symptoms for short duration. Stay hydrated, rest, monitor fever." << endl;
+            else
+                cout << "            Adult with mild typhoid symptoms for 3+ days. Consult doctor for antibiotics." << endl;
+        }
+        else if(severity == "moderate") {
+            cout << "            Adult with moderate typhoid symptoms. URGENT: Seek hospital care and start treatment." << endl;
+        }
+        else if(severity == "serious") {
+            cout << "            EMERGENCY: Adult with severe typhoid complications. Hospitalization required immediately!" << endl;
+        }
+    }
+
+    // Elderly (>60 years)
+    else if(age > 60) {
+        if(severity == "minor") {
+            if(duration <= 3)
+                cout << "            Elderly person with mild typhoid symptoms. Stay hydrated, rest, monitor fever." << endl;
+            else
+                cout << "            Elderly person with mild typhoid symptoms for 3+ days. Hospital visit recommended." << endl;
+        }
+        else if(severity == "moderate") {
+            cout << "            Elderly person with moderate typhoid symptoms. HIGH RISK: Immediate medical attention required." << endl;
+        }
+        else if(severity == "serious") {
+            cout << "            EMERGENCY: Elderly person with severe typhoid complications. Hospitalization required immediately!" << endl;
+        }
+    }
+
+    else {
+        cout << "Invalid input. Please check age and severity." << endl;
+    }
+}
+
+
         cout << endl << endl << endl << "                                      PLEASE PRESS ENTER BUTTON TO GET OPTION..";
         if (matched2) {
             getchar();
