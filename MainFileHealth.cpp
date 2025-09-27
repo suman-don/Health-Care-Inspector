@@ -17,6 +17,8 @@ int main() {
     d.healthinfo();
     d.healthinfoSecond();
     d.healthinfoThird();
+    d.noFound();
+    
     d.addRecord();
     
     do {
