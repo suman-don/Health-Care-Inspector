@@ -38,6 +38,24 @@ public:
     void healthinfoSecond();
     void healthinfoThird();
     
+    //no illness found
+    void noFound(){
+    	if(!matched && !matched1 && !matched2){
+    	cout<<"\n\n\n\n\n                           -------------------------------------------------------------------------------------";
+ 	cout<<"\n                          |                                                                                     |";
+ 	cout<<"\n                          |                                                                                     |"<<endl;
+ 	cout<<"                          |            Your symptoms don't clearly match any illness in our database.           |"<<endl;
+ 	cout<<"                          |                                                                                     |"<<endl;
+ 	cout<<"                          |      Try entering more details , or visit a doctor if your condition persists.      |"<<endl;
+ 	cout<<"                          |                                                                                     |"<<endl;
+ 	cout<<"                          |                                                                                     |"<<endl;
+ 	cout<<"                          |                                                                                     |"<<endl;
+ 	cout<<"                           -------------------------------------------------------------------------------------"<<endl;
+    	getchar();
+	}
+	
+	}
+    
     // option
     void suggestion();
     void suggestion2();
