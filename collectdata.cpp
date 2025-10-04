@@ -1,47 +1,63 @@
 #include "cls.h"
 
-void detail::getdata() {
-       cout << "\n\n" << setw(82) << "PERSONAL DETAIL AND ALSO HEALTH ISSUE" << endl;
+void detail::collectdata() {
+	cout << "\n\n"<< "                                           PERSONAL DETAIL AND ALSO HEALTH ISSUE" << endl;
     cout << "\n                              YOU MUST FILL ALL INFORMATION BECAUSE THIS IS OUR FORMALITY...." << endl;
     
-        
-    cout<< "\n                                  "<<"FULLNAME: ";
+    cout << "\n                                  FULLNAME: ";
     getline(cin, name);
-    cout<<"\n" << setw(39) << "AGE: ";
+
+    cout << "\n                                  AGE: ";
     cin >> age;
-    cin.ignore();
-    cout<<"\n                                  GENDER(F/M): ";
+    cin.ignore(); // int ??? ignore
+
+    cout << "\n                                  GENDER(F/M): ";
     cin >> gender;
-    cin.ignore();
-    cout<<"\n                                  "<<"ADDRESS: ";
-    getline(cin,address);
-    cout<<"\n                                  "<<"CONTACT NUMBER: ";
-    getline(cin,contact);
-    cout<<"\n                                  "<<"DATE(YY/MM/DD): ";
-    getline(cin,date);
-    cout<<"\n                                  SYMPTOMS: ";
+    cin.ignore(); // char ??? ignore (next getline skip ??? ?????)
+
+    cout << "\n                                  ADDRESS: ";
+    getline(cin, address);
+
+    cout << "\n                                  CONTACT NUMBER: ";
+    getline(cin, contact);
+
+    cout << "\n                                  DATE(YY/MM/DD): ";
+    getline(cin, date);
+
+    cout << "\n                                  SYMPTOMS: ";
     getline(cin, symptom);
-    cout<<"\n                                  DURATION OF SYMPTOMS: ";
+
+    cout << "\n                                  DURATION OF SYMPTOMS: ";
     cin >> duration;
-    cin.ignore();
-    cout<<"\n                                  SEVERITY(Minor,Moderate,Serious): ";
+    cin.ignore(); // int ??? ignore
+
+    cout << "\n                                  SEVERITY(Minor,Moderate,Serious): ";
     getline(cin, severity);
- 
- 
-    
-    
 
-    system("cls");
-
-    // Capitalize first 10 letters of name
-//    for (int i = 0; i < 100 && i < name.length(); i++) {
-//        name[i] = toupper(name[i]);
-//    }
+    // Count words from symptom
+    istringstream iss(symptom);
+    string word;
+    while (iss >> word) {
+        count++;
+    }
 }
 
-void detail::detecting(){
-	cout<<"\n\n\n\n\n\n\n\n\n\n\n\n                                                   DETECTING........";
-    Sleep(1000);
-    system("cls");
+void detail::detectingAnimation(){
+		cout<<endl<<endl<<endl;
+            cout<<"\n\n\n\n\n\n\n\n\n                                               Saving Patient detail..............."<<endl;
+            Sleep(1000);
+            system("cls");
+            cout<<endl<<endl<<endl;
+            cout<<"\n\n\n\n\n\n\n\n\n                                               Analyzing Symptoms..............."<<endl;
+            Sleep(1000);
+            system("cls");
+            cout<<endl<<endl<<endl;
+            cout<<"\n\n\n\n\n\n\n\n\n                                               Checking duration..............."<<endl;
+            Sleep(1000);
+            system("cls");
+            cout<<endl<<endl<<endl;
+            cout<<"\n\n\n\n\n\n\n\n\n                                               Recognizing severity..............."<<endl;
+            Sleep(1000);
+            system("cls");
 }
 

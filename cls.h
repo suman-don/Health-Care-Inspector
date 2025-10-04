@@ -1,71 +1,54 @@
 #ifndef CLS_H
 #define CLS_H
+
 #include <iostream>
-#include <string>
-#include <cctype>  
-#include <cstdlib>
-#include <algorithm>
-#include <iomanip>
+#include <utility>
+#include <sstream>
 #include <windows.h>
 #include <fstream>
-#include <sstream>
-#include <string>
+#include <cmath>
+#include <iomanip>
 using namespace std;
-
-class welcome {
-public:
-    void welcomePage();
+class Welcome{
+	public:
+		void welcomePage();
 };
 
 class detail {
 public:
-    string name, gender, symptom, severity, address,date,contact;
-    int age;
-    int duration;
+    string name, date, contact, severity, gender, address;
+    string symptom;
+    int duration, age;
+    int count = 0;
     string suggestionName;
 
-    bool matched = false;
-    bool matched1 = false;
-    bool matched2 = false;
+    //------- Data Collection ---------
+    void collectdata();
+    void detectingAnimation();
 
-    // get data from user
-    void getdata();
-    void detecting();
+    //---------- Health Info -------------
+    pair<string,float> healthinfo1();
+    pair<string,float> healthinfo2();
+    pair<string,float> healthinfo3();
+    void result1(pair<string,float> best);
+	void result2(pair<string,float> best);
+	void result3(pair<string,float> best);   
 
-
-    // show health disease
-    void healthinfo();
-    void healthinfoSecond();
-    void healthinfoThird();
+    //---------- Suggestion -------------
+    void suggestion1(pair<string,float> best);
+    void suggestion2(pair<string,float> best);
+    void suggestion3(pair<string,float> best);
     
-    //no illness found
-    void noFound(){
-    	if(!matched && !matched1 && !matched2){
-    	cout<<"\n\n\n\n\n                           -------------------------------------------------------------------------------------";
- 	cout<<"\n                          |                                                                                     |";
- 	cout<<"\n                          |                                                                                     |"<<endl;
- 	cout<<"                          |            Your symptoms don't clearly match any illness in our database.           |"<<endl;
- 	cout<<"                          |                                                                                     |"<<endl;
- 	cout<<"                          |      Try entering more details , or visit a doctor if your condition persists.      |"<<endl;
- 	cout<<"                          |                                                                                     |"<<endl;
- 	cout<<"                          |                                                                                     |"<<endl;
- 	cout<<"                          |                                                                                     |"<<endl;
- 	cout<<"                           -------------------------------------------------------------------------------------"<<endl;
-    	getchar();
-	}
-	
-	}
+    //---------- Money ----------------
+    void money1(pair<string,float> best);
+    void money2(pair<string,float> best);
+    void money3(pair<string,float> best);
     
-    // option
-    void suggestion();
-    void suggestion2();
-    void suggestion3();
-    void hospital();
-    void money();
-    void money2();
-    void money3();
-   
-     void addRecord() {
+    //--------- Patient detail record ----------
+    
+    //--------- Add Record -------------------
+      void addRecord(pair<string,float> best) {
+      	suggestionName = best.first;
         ofstream outfile("patientHistory.txt", ios::app);
         if (!outfile) {
             cout << "Unable to open file.\n";
@@ -76,10 +59,13 @@ public:
         outfile << name << "|" << age << "|" << gender << "|" << address << "|" 
                 << contact << "|" << suggestionName << "|" << date << endl;
         outfile.close();
-        cout << "Record added successfully!\n";
+
     }
+    
+    //--------- Show Record ----------------
 
     void showRecord() {
+    	
         ifstream infile("patientHistory.txt");
         if (!infile) {
             cout << "Unable to open file or no records exist.\n";
@@ -107,39 +93,41 @@ public:
             getline(ss, readNumber, '|');
             getline(ss, readIll, '|');
             getline(ss, readDate, '|');
-            
-            cout<<"    -----------------------------------------------------------" << endl;
-        	cout<<"       Field                |           Details                "<<endl;
- 	        cout<<"    ------------------------|----------------------------------"<<endl;
- 	        cout<<"       Full Name            |           "<<readName<<"             "<<endl;
- 	        cout<<"    ------------------------|----------------------------------"<<endl;
- 	        cout<<"       Age                  |           "<<readAge<<"              "<<endl;
- 	        cout<<"    ------------------------|----------------------------------"<<endl;
- 	        cout<<"       Gender               |           "<<readGender<<"           "<<endl;
- 	        cout<<"    ------------------------|----------------------------------"<<endl;
- 	        cout<<"       Address              |           "<<readAddress<<"          "<<endl;
- 	        cout<<"    ------------------------|----------------------------------"<<endl;
- 	        cout<<"       Contact Number       |           "<<readNumber<<"           "<<endl;
- 	        cout<<"    ------------------------|----------------------------------"<<endl;
- 	        cout<<"       Illness              |           "<<readIll<<"              "<<endl;
- 	        cout<<"    ------------------------|----------------------------------"<<endl;
- 	        cout<<"       Date                 |           "<<readDate<<"              "<<endl;
- 	        cout<<"    -----------------------------------------------------------"<<endl;
-            cout << "-----------------------------------------------------------\n" << endl;
+         
+		 //-------- Alining Space -----------------------   
+        	int namelength = readName.length();
+ 	        int agelength = (readAge == 0) ? 1 : (int)log10(readAge) + 1;
+ 	        int genderlength = readGender.length();
+ 	        int addresslength = readAddress.length();
+ 	        int numberlength = readNumber.length();
+	        int illlength = readIll.length();
+ 	        int datelength = readDate.length();
+            cout<<endl;
+          cout<<"    --------------------------------------------------------------------------------------------------------------" << endl;
+        	cout<<"   |   Field                |           Details                                                                   |"<<endl;
+ 	        cout<<"   |------------------------|-------------------------------------------------------------------------------------|"<<endl;
+ 	        cout<<"   |   Full Name            |           "<<readName<<setw(75-namelength)<<"|"<<endl;
+ 	        cout<<"   |------------------------|-------------------------------------------------------------------------------------|"<<endl;
+ 	        cout<<"   |   Age                  |           "<<readAge<<setw(75-agelength)<<"|"<<endl;
+ 	        cout<<"   |------------------------|-------------------------------------------------------------------------------------|"<<endl;
+ 	        cout<<"   |   Gender               |           "<<readGender<<setw(75-genderlength)<<"|"<<endl;
+ 	        cout<<"   |------------------------|-------------------------------------------------------------------------------------|"<<endl;
+ 	        cout<<"   |   Address              |           "<<readAddress<<setw(75-addresslength)<<"|"<<endl;
+ 	        cout<<"   |------------------------|-------------------------------------------------------------------------------------|"<<endl;
+ 	        cout<<"   |   Contact Number       |           "<<readNumber<<setw(75-numberlength)<<"|"<<endl;
+ 	        cout<<"   |------------------------|-------------------------------------------------------------------------------------|"<<endl;
+ 	        cout<<"   |   Illness              |           "<<readIll<<setw(75-illlength)<<"|"<<endl;
+ 	        cout<<"   |------------------------|-------------------------------------------------------------------------------------|"<<endl;
+ 	        cout<<"   |   Date                 |           "<<readDate<<setw(75-datelength)<<"|"<<endl;
+ 	        cout<<"    --------------------------------------------------------------------------------------------------------------"<<endl;
+            cout<<"  ---------------------------------------------------------------------------------------------------------------------\n" << endl;
         }
 
         infile.close();
 
     }
     
-    void reset(){
-    	
-		matched = false;
-        matched1 = false;
-        matched2 = false;
-	}
-	
-	 void searchRecord() {
+     void searchRecord() {
     string searchName;
     cout << "Enter patient name to search: ";
     cin.ignore(); // Clear buffer if needed
@@ -201,7 +189,7 @@ public:
     infile.close();
 }
 
-      void deleteRecord() {
+    void deleteRecord() {
     string deleteName;
     cout << "Enter patient name to delete: ";
     cin.ignore();
@@ -262,10 +250,7 @@ public:
     }
 }
     
-    
 };
-
-
 
 #endif
 

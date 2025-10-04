@@ -1,112 +1,133 @@
 #include "cls.h"
 
 int main() {
-    int option;
-    
-    welcome w;
-    w.welcomePage();
-    
+	Welcome w;
+	w.welcomePage();
     detail d;
     while(1){
-    	
+    d.collectdata();
+    system("cls");
+    d.detectingAnimation();
+    
+    pair<string,float> r1 = d.healthinfo1();
+    pair<string,float> r2 = d.healthinfo2();
+    pair<string,float> r3 = d.healthinfo3();
+
+    // Compare all three percentages
+    pair<string,float> best = r1;
+    if (r2.second > best.second) best = r2;
+    if (r3.second > best.second) best = r3;
+    
+	d.result1(best);   
+	d.result2(best);
+	d.result3(best); 
+
+    d.addRecord(best);
+    getchar();
+    system("cls");
+    int choice;
+    do{
+    	  
+    cout<<"\n\n\n\n\n\n\n                                         ------------------------------------"<<endl;;	  
+    cout<<"                                        |      ------- Option --------       |"<<endl;
+    cout<<"                                        |------------------------------------|"<<endl;
+    cout<<"                                        |           1.Suggestion             |"<<endl;
+    cout<<"                                        |------------------------------------|"<<endl;
+    cout<<"                                        |           2.NearBy Hospital        |"<<endl;
+    cout<<"                                        |------------------------------------|"<<endl;
+    cout<<"                                        |           3.Money Requirement      |"<<endl;
+    cout<<"                                        |------------------------------------|"<<endl;
+    cout<<"                                        |           4.Patient History        |"<<endl;
+    cout<<"                                        |------------------------------------|"<<endl;
+    cout<<"                                        |           5.Re-Test                |"<<endl;
+    cout<<"                                        |------------------------------------|"<<endl;
+    cout<<"                                        |           6.Exit                   |"<<endl;
+    cout<<"                                         ------------------------------------"<<endl<<endl;
+    cout<<"                                           Enter your choice: ";
+    cin>>choice;
+    
+    switch(choice){
+    	case 1: system("cls");
+    	        d.suggestion1(best);
+    	        d.suggestion2(best);
+    	        d.suggestion3(best);
+    	        cout<<endl<<endl<<endl<<"\n\n\n\n\n\n\n\n\n\n                                                  ";
+                system("pause");
+    	        system("cls");
+    	      break;
+    	case 2:
+    		   
+    		   break;
+    	case 3: system("cls");
+    	        d.money1(best);
+    	        d.money2(best);
+    	        d.money3(best);
+    	        cout<<endl<<endl<<endl<<"\n\n\n\n                                                ";
+                system("pause");
+    	        system("cls");
+    		
+    		   break;
+    	case 4: system("cls");
+    	        do{
+    	        	cout<<"\n\n\n\n\n\n\n                                         ------------------------------------"<<endl;;	  
+    cout<<"                                        |  ------- Patient Record --------   |"<<endl;
+    cout<<"                                        |------------------------------------|"<<endl;
+    cout<<"                                        |           1.Show Record            |"<<endl;
+    cout<<"                                        |------------------------------------|"<<endl;
+    cout<<"                                        |           2.Search Record          |"<<endl;
+    cout<<"                                        |------------------------------------|"<<endl;
+    cout<<"                                        |           3.Delete Record          |"<<endl;
+    cout<<"                                        |------------------------------------|"<<endl;
+    cout<<"                                        |           4.Exit                   |"<<endl;
+    cout<<"                                         ------------------------------------"<<endl<<endl;
+    cout<<"                                           Enter your choice: ";
+    	        	cin>>choice;
+    	        	switch(choice){
+    	        		case 1: system("cls");
+    	        			  d.showRecord();
+    	        			  getchar();
+    	        			  getchar();
+    	        			  system("cls");
+    	        			 break;
+    	        		case 2:
+    	        			system("cls");
+    	        			 d.searchRecord();
+    	        			 getchar();
+    	        			  system("cls");
+    	        			 break;
+    	        		case 3:
+    	        			 system("cls");
+    	        			 d.deleteRecord();
+    	        			 getchar();
+    	        			  system("cls");
+    	        			 break;
+    	        		case 4:
+    	        			  system("cls");
+    	        			 break;
+    	        		default:
+    	        			   cout<<"Invaild Choice"<<endl;
+    	        			   break;
+					}
+    	        	
+				} while(choice != 4);
+    	       break;
+    	       case 5: system("cls");
+    	               cin.ignore();
+    	       	 
+    	       	 break;
+    	       	 case 6:
+    	       	 	  return 0;
+    	       	 	  break;
+    	default: 
+    	        cout<<"Invaild Choice!!!"<<endl;
+    	        break;
+	}
 	
-    d.getdata();
-    
-   	d.detecting();
-
-    d.healthinfo();
-    d.healthinfoSecond();
-    d.healthinfoThird();
-    d.noFound();
-    
-    d.addRecord();
-    
-    do {
-        system("cls");
-        cout << endl << endl << endl << "                                                        OPTION...." << endl;
-        cout << endl << setw(67) << "1.SUGGESTION" << endl;
-        cout << endl << setw(72) << "2.NEARBY HOSPITAL" << endl;
-        cout << endl << setw(75) << "3.MONEY REQUIREMENTS" << endl;
-        cout << endl << setw(72) << "4.Patient History" <<endl;
-        cout << endl << setw(61) << "5.Test" << endl;
-        cout << endl << setw(61)<<"6.Exit"<<endl;
-        cout << endl << "                                               ENTER YOUR OPTION: ";
-        cin >> option;
-        system("cls");
-
-        switch (option) {
-            case 1:
-            	cout<<"\n\n\n\n\n\n\n\n\n\n\n\n                                                   THINKING FOR SUGGESTION........";
-            	Sleep(1000);
-            	system("cls");
-                d.suggestion();
-                d.suggestion2();
-                d.suggestion3();
-                break;
-            case 2:		
-                d.hospital();
-                break;
-            case 3:
-            		cout<<"\n\n\n\n\n\n\n\n\n\n\n\n                                                   CACULATING COST........";
-            		Sleep(1000);
-            		system("cls");
-                d.money();
-                d.money2();
-                d.money3();
-                break;
-			case 4: 
-			        do{
-			        	 system("cls");
-			         cout << endl << endl << endl << "                                                        OPTION...." << endl;
-                     cout << endl << setw(67) << "1.SHOW ALL HISTORY" << endl;
-                     cout << endl << setw(65) << "2.SEARCH HISTORY" << endl;
-                     cout << endl << setw(72)   << "3.DELETE PATIENT RECORD"<<endl;
-                     cout<<endl   << setw(55)    <<"4.Exit"<<endl;
-			         cout << endl << "                                               ENTER YOUR OPTION: ";
-			         cin>>option;
-			       switch(option){
-			       	case 1:	system("cls");
-					        cout<<"\n\n\n                                           ----- HOSPITAL MEDICAL RECORDS -----\n\n"<<endl;
-			                d.showRecord();
-			                getchar();
-			                getchar();
-				              break;
-				              
-				   	case 2:	system("cls");
-					        cout<<"\n\n\n                                           ----- HOSPITAL MEDICAL RECORDS -----\n\n"<<endl;
-			                d.searchRecord();
-			                getchar();
-				   
-				   break;
-				   case 3: system("cls");
-				            cout<<"\n\n\n                                           ----- HOSPITAL MEDICAL RECORDS -----\n\n"<<endl;
-				            d.deleteRecord();
-				            break;
-				   
-				   default: cout<<"Invaild Choice"<<endl;
-			       	  break;
-			} }while(option != 4);
-				  
-				  break;	
-				   
-            case 5:  d.reset();
-			     cin.ignore(); 
-            	cout<<"\n\n\n\n\n\n\n\n\n\n\n\n                                                   ANOTHER TEST........";
-            	Sleep(1000);
-            	
-            	system("cls");
-               break;
-            case 6: 
-            	 return 0;
-            	 break;
-            default:
-                cout << "Invalid choice!!!" << endl;
-                getchar();
-                getchar();
-                break;
-        }
-    } while(option != 5);
+	} while(choice != 5); 
+  
 }
+
 
     return 0;
 }
+
