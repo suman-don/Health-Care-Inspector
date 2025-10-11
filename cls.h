@@ -39,6 +39,9 @@ public:
     void suggestion2(pair<string,float> best);
     void suggestion3(pair<string,float> best);
     
+    //--------- Nearby Hospital ---------------
+    void hospital1(pair<string,float> best);
+    
     //---------- Money ----------------
     void money1(pair<string,float> best);
     void money2(pair<string,float> best);

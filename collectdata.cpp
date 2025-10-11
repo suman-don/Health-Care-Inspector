@@ -37,6 +37,7 @@ void detail::collectdata() {
     // Count words from symptom
     istringstream iss(symptom);
     string word;
+    count = 0;
     while (iss >> word) {
         count++;
     }

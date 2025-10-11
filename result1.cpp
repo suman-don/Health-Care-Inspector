@@ -2,7 +2,7 @@
 
   //------------------ Result 1 -------------------------
   void detail::result1(pair<string,float> best){
-  			if(best.first == "Common Cold" || best.first == "Dengue" || best.first == "Influenza (flu)" || best.first == "COVID-19" || best.first == "Tuberculosis"
+  			if(best.first == "Common Cold" || best.first == "Dengue" || best.first == "Influenza (flu)" || best.first == "COVID-19" || best.first == "Tuberculosis (TB)"
 			|| best.first == "Hepatitis" || best.first == "Measles" || best.first == "Chicken pox" || best.first == "Malaria" || best.first == "HIV/AIDS"
 			|| best.first == "Hypertension (High Blood Pressure)" || best.first == "Coronary Artery Disease" || best.first == "Arrhythmias (Irregular Heartbeat)" 
 			|| best.first == "Heart Failure" || best.first == "Stroke" || best.first == "Peripheral Artery Disease" || best.first == "Asthma" || 
@@ -229,7 +229,7 @@ if(best.first == "COVID-19"){
   
   //----------- Tuberculosis -------------
   //---------------------- Tuberculosis ---------------------------
-if(best.first == "Tuberculosis"){
+if(best.first == "Tuberculosis (TB)"){
     // Young children (=5 years)
     if(age <= 5) {
         if(severity == "minor") {

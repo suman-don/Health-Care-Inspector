@@ -55,7 +55,9 @@ int main() {
                 system("pause");
     	        system("cls");
     	      break;
-    	case 2:
+    	case 2: system("cls");
+    	        d.hospital1(best);
+    	        
     		   
     		   break;
     	case 3: system("cls");
